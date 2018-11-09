@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B84C92892191DA6600D00287 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C92882191DA6600D00287 /* Car.swift */; };
+		B879B54A219287DE00494075 /* Bike.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879B549219287DE00494075 /* Bike.swift */; };
 		B87B76A72172D53700DD999B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B76A62172D53700DD999B /* AppDelegate.swift */; };
 		B87B76A92172D53700DD999B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B76A82172D53700DD999B /* ViewController.swift */; };
 		B87B76AC2172D53700DD999B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B87B76AA2172D53700DD999B /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		B84C92882191DA6600D00287 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		B879B549219287DE00494075 /* Bike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bike.swift; sourceTree = "<group>"; };
 		B87B76A32172D53700DD999B /* CodableSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodableSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B87B76A62172D53700DD999B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B87B76A82172D53700DD999B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				B84C92882191DA6600D00287 /* Car.swift */,
+				B879B549219287DE00494075 /* Bike.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B879B54A219287DE00494075 /* Bike.swift in Sources */,
 				B87B76A92172D53700DD999B /* ViewController.swift in Sources */,
 				B87B76A72172D53700DD999B /* AppDelegate.swift in Sources */,
 				B84C92892191DA6600D00287 /* Car.swift in Sources */,
