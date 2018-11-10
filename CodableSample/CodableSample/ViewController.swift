@@ -10,10 +10,9 @@ import UIKit
 
 typealias EncodeDecodeUsingCodable = ViewController
 typealias EncodeDecodeUsingCodingKeys = ViewController
+typealias DecodingSpecificPropertiesFromJSON = ViewController
 
 class ViewController: UIViewController {
-    
-//    let downloadURLString = "https://api.punkapi.com/v2/beers"
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,30 +32,13 @@ class ViewController: UIViewController {
         let bikeJsonString = self.encodeBikeSpecificPropertiesToJson(bike)
         self.decodeBikeJsonWithAdditionalBikePropertiesFrom(bikeJsonString)
         
-        //        guard let downlaodURL = URL(string: downloadURLString)  else {
-        //            return
-        //        }
-        //        self.downloadJsonFrom(downlaodURL)
+        
+        //Decoding Array of beer data from Punk API
+        let downloadURLString = "https://api.punkapi.com/v2/beers"
+        let downloadURL = URL(string: downloadURLString)!
+        self.downloadAndDecodeBeer(downloadURL)
     }
     
-//    func downloadJsonFrom(_ downloadURL: URL) {
-//
-//        let jsonDownloadTask = URLSession.shared.dataTask(with: downloadURL) { (downloadedData, response, error) in
-//
-//            guard let dataResponse = downloadedData, error == nil else {
-//                print(error?.localizedDescription ?? "Response error")
-//                return
-//            }
-//            do{
-//                let decoder = JSONDecoder()
-//                let ingredientsData = try decoder.decode([].self, from: dataResponse)
-//                print(ingredientsData)
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//        }
-//        jsonDownloadTask.resume()
-//    }
 }
 
 extension EncodeDecodeUsingCodable {
@@ -97,3 +79,15 @@ extension EncodeDecodeUsingCodingKeys {
     }
 }
 
+extension DecodingSpecificPropertiesFromJSON {
+    
+    func downloadAndDecodeBeer(_ downloadURL: URL) {
+        
+        let jsonDownloadTask = URLSession.shared.dataTask(with: downloadURL) { (downloadedData, response, error) in
+            
+            let beerList: [Beer] = try! JSONDecoder().decode([Beer].self, from: downloadedData!)
+            print(beerList)
+        }
+        jsonDownloadTask.resume()
+    }
+}
