@@ -10,6 +10,8 @@
 		B843B4A82196AEDD009DC415 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843B4A72196AEDD009DC415 /* Beer.swift */; };
 		B84C92892191DA6600D00287 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C92882191DA6600D00287 /* Car.swift */; };
 		B879B54A219287DE00494075 /* Bike.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879B549219287DE00494075 /* Bike.swift */; };
+		B879CC55219816DF006AE313 /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879CC54219816DF006AE313 /* Volume.swift */; };
+		B879CC5721981910006AE313 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879CC5621981910006AE313 /* Ingredients.swift */; };
 		B87B76A72172D53700DD999B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B76A62172D53700DD999B /* AppDelegate.swift */; };
 		B87B76A92172D53700DD999B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B76A82172D53700DD999B /* ViewController.swift */; };
 		B87B76AC2172D53700DD999B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B87B76AA2172D53700DD999B /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 		B843B4A72196AEDD009DC415 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		B84C92882191DA6600D00287 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		B879B549219287DE00494075 /* Bike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bike.swift; sourceTree = "<group>"; };
+		B879CC54219816DF006AE313 /* Volume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volume.swift; sourceTree = "<group>"; };
+		B879CC5621981910006AE313 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		B87B76A32172D53700DD999B /* CodableSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodableSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B87B76A62172D53700DD999B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B87B76A82172D53700DD999B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +49,8 @@
 			isa = PBXGroup;
 			children = (
 				B843B4A72196AEDD009DC415 /* Beer.swift */,
+				B879CC54219816DF006AE313 /* Volume.swift */,
+				B879CC5621981910006AE313 /* Ingredients.swift */,
 			);
 			path = PunkAPIModel;
 			sourceTree = "<group>";
@@ -160,9 +166,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B879CC5721981910006AE313 /* Ingredients.swift in Sources */,
 				B879B54A219287DE00494075 /* Bike.swift in Sources */,
 				B87B76A92172D53700DD999B /* ViewController.swift in Sources */,
 				B843B4A82196AEDD009DC415 /* Beer.swift in Sources */,
+				B879CC55219816DF006AE313 /* Volume.swift in Sources */,
 				B87B76A72172D53700DD999B /* AppDelegate.swift in Sources */,
 				B84C92892191DA6600D00287 /* Car.swift in Sources */,
 			);

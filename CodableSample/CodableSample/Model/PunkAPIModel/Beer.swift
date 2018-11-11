@@ -10,11 +10,15 @@ import Foundation
 
 class Beer: Codable {
     
-    var name: String = "Unknown"
-    var description: String = "Unknown"
+    var name: String
+    var description: String
+    var volume: Volume
+    var ingredients: Ingredients
     
     enum CodingKeys: String, CodingKey {
         case name
         case description
+        case volume
+        case ingredients
     }
 }
