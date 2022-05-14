@@ -14,67 +14,42 @@ typealias DecodingSpecificPropertiesFromJSON = ViewController
 
 class ViewController: UIViewController {
     
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        
+        //MARK: EncodeDecodeUsingCodable
         //Decoding and Encoding Car using Codable, locally
-        
         let car = Car(name: "Alto", brand: "Maruthi Suzuki", yearOfManufacturer: Date(timeIntervalSinceReferenceDate: -123456789.0), isNew: true, vechicleType: .Unknown, carHeight: 100, carWidth: 172)
-        let carJsonString = self.encodeCarIntoJson(car)
-        self.decodeJsonIntoCar(carJsonString)
+        let carJsonString = encode(car)
+        decode(type: Car.self, jsonString: carJsonString)
         
-        
+        //MARK: EncodeDecodeUsingCodingKeys
         //Encoding Specific properties using CodingKeys and Decoding with additional properties of class, locally
-        
+        /*
+         As mentioned in the model class additional properties not listed in codingkeys must given a defaukt value.
+         */
         let bike = Bike(name: "Unicorn", brand: "Honda", cc: 160, isNew: false)
-        let bikeJsonString = self.encodeBikeSpecificPropertiesToJson(bike)
-        self.decodeBikeJsonWithAdditionalBikePropertiesFrom(bikeJsonString)
+        let bikeJsonString = self.encode(bike)
+        decode(type: Bike.self, jsonString: bikeJsonString)
         
-        
+        //MARK: PUNK API Sample
         //Decoding Array of beer data from Punk API
         let downloadURLString = "https://api.punkapi.com/v2/beers"
         let downloadURL = URL(string: downloadURLString)!
-        self.downloadAndDecodeBeer(downloadURL)
+        downloadAndDecodeBeer(downloadURL)
     }
     
-}
-
-extension EncodeDecodeUsingCodable {
-    
-    func encodeCarIntoJson(_ car: Car?) -> String? {
-        let encodedCar = try? JSONEncoder().encode(car)
-        if let encodedJSONString = String(data: encodedCar!, encoding: .utf8) {
-            print(encodedJSONString)
-            return encodedJSONString
-        }
-        return nil
+    func encode<T: Encodable>(_ model: T) -> String? {
+        let encodeModel = try! JSONEncoder().encode(model)
+        let encodedJsonString = String(data: encodeModel, encoding: .utf8)
+        print(encodedJsonString!)
+        return encodedJsonString
     }
     
-    func decodeJsonIntoCar(_ jsonString: String?) {
-        if let carJson = jsonString?.data(using: .utf8) {
-            let newCar: Car? = try? JSONDecoder().decode(Car.self, from: carJson)
-            print(newCar!)
-        }
-    }
-}
-
-extension EncodeDecodeUsingCodingKeys {
-    
-    func encodeBikeSpecificPropertiesToJson(_ bike: Bike?) -> String? {
-        let encodeBike = try? JSONEncoder().encode(bike)
-        if let encodedJSONString = String(data: encodeBike!, encoding: .utf8) {
-            print(encodedJSONString)
-            return encodedJSONString
-        }
-        return nil
-    }
-    
-    func decodeBikeJsonWithAdditionalBikePropertiesFrom(_ jsonString: String?) {
-        if let bikeJson = jsonString?.data(using: .utf8) {
-            let newBike: Bike = try! JSONDecoder().decode(Bike.self, from: bikeJson)
-            print(newBike)
+    func decode<T: Decodable>(type: T.Type, jsonString: String?) {
+        if let json = jsonString?.data(using: .utf8) {
+            let newObject: T = try! JSONDecoder().decode(T.self, from: json)
+            print(newObject)
         }
     }
 }
@@ -82,9 +57,7 @@ extension EncodeDecodeUsingCodingKeys {
 extension DecodingSpecificPropertiesFromJSON {
     
     func downloadAndDecodeBeer(_ downloadURL: URL) {
-        
         let jsonDownloadTask = URLSession.shared.dataTask(with: downloadURL) { (downloadedData, response, error) in
-            
             let beerList: [Beer] = try! JSONDecoder().decode([Beer].self, from: downloadedData!)
             print(beerList)
         }
