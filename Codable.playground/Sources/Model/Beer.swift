@@ -3,19 +3,19 @@ import Foundation
 /*
  Codable is typealias that conforms to both Encodable and Decodable
  */
-struct Beer: Codable {
+public struct Beer: Codable {
     var name: String
     var description: String
     var volume: Volume
     var ingredients: Ingredients
 }
 
-struct Volume: Codable {
+public struct Volume: Codable {
     var value: Int
     var unit: String
 }
 
-struct Ingredients: Codable {
+public struct Ingredients: Codable {
     var malt: [Malt]
     var yeast: String
 }
@@ -24,7 +24,7 @@ struct Ingredients: Codable {
  Note: In Malt model using CodingKeys to rename the key
         availble from json to maltName
  */
-struct Malt: Codable {
+public struct Malt: Codable {
     var maltName: String
     var amount: Amount
     
@@ -34,7 +34,7 @@ struct Malt: Codable {
     }
 }
 
-struct Amount: Codable {
+public struct Amount: Codable {
     var value: Float
     var unit: String
 }

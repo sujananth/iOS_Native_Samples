@@ -1,14 +1,6 @@
-//
-//  Bike.swift
-//  CodableSample
-//
-//  Created by Sujananth on 11/7/18.
-//  Copyright © 2018 sujananth. All rights reserved.
-//
-
 import Foundation
 
-class Bike: NSObject, Codable {
+public class Bike: NSObject, Codable {
     
     var name: String
     var brand: String
@@ -22,7 +14,7 @@ class Bike: NSObject, Codable {
         case brand
     }
         
-    init(name:String, brand: String, cc: Int, isNew: Bool) {
+    public init(name:String, brand: String, cc: Int, isNew: Bool) {
         
         self.name = name
         self.brand = brand

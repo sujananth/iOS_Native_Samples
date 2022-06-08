@@ -1,44 +1,27 @@
 import Foundation
 
-enum ApiError: Error {
-    case noResponse
-    case modelCreation
-    case unrecognizedUrl
-    case unknownData
+enum CodableError: Error {
+    case decodingError
 }
 
-protocol ApiResource {
-    associatedtype model: Decodable
-}
-
-extension ApiResource {
+public class ApiResource {
     
-    /*
-     Note:
-     
-     Serializing is about moving structured data over a storage/transmission medium
-     in a way that the structure can be maintained.
-     
-     Encoding is more broad, like about how said data is converted to different forms, etc.
-     */
-    func serialize(data: Data) -> Data {
-        do {
-            try JSONSerialization.jsonObject(with: data)
-            return data
-        } catch {
-            return Data("{}".utf8)
-        }
-    }
+    public static let shared = ApiResource()
     
-    func downloadAndDecode<T>(of type: T, from url: URL, completion: @escaping (_ error: Error?, _ data: T?) -> Void) {
+    private init() { }
+    
+    public func downloadAndDecode<T: Decodable>(model: T.Type, from url: URL, completion: @escaping (_ error: Error?, _ data: T?) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let _ = error else {
+            guard error == nil, let responseData = data else {
                 completion(error, nil)
                 return
             }
-
-//            let serializedData = serialize(data: data)
-//            completion(error, data)
+            do {
+                let decodedModel = try JSONDecoder().decode(model.self, from: responseData)
+                completion(nil, decodedModel)
+            } catch {
+                completion(CodableError.decodingError ,nil)
+            }
         }.resume()
     }
 }
